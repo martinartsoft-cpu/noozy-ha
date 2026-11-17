@@ -1,0 +1,4 @@
+configuration:
+  reserve_g:
+    name: Rezerva filamentu (g)
+    description: Kolik gramů má na cívce zbýt navíc, aby tisk neplatil za „málo filamentu". Výchozí 20 g.

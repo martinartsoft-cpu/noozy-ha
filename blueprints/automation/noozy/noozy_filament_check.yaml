@@ -1,0 +1,51 @@
+# Noozy Watcher: málo filamentu na tisk, který právě začal - upozornění a volitelně pauza.
+# Watcher při startu tisku porovná gramy tisku (ze souboru na tiskárně) se zbytkem cívky v aktivním slotu podle Noozy
+# (sklad z PC minus tisky čekající na odečet, + náhradní cívka stejného filamentu v AMS) a zapne „málo filamentu".
+# Pauzu Noozy samo do tiskárny neposílá - stiskne ji tahle automatizace, a jen když je zbytek jistý (ne „váha odhadem").
+blueprint:
+  name: Noozy - málo filamentu před tiskem
+  description: >-
+    Když Noozy Watcher zjistí, že na právě spuštěný tisk nestačí filament, pošle upozornění a volitelně tisk pozastaví
+    (jen u cívky se zváženým zbytkem). When Noozy Watcher finds the filament is not enough for the print that just
+    started, it sends a notification and optionally pauses the print (only for a weighed spool).
+  domain: automation
+  input:
+    short_sensor:
+      name: Málo filamentu (Noozy Watcher)
+      description: Binární senzor „<tiskárna> - málo filamentu" z Noozy Watcher.
+      selector:
+        entity:
+          domain: binary_sensor
+          integration: mqtt
+    notify_actions:
+      name: Upozornění
+      description: Co udělat - třeba oznámení do telefonu (notify.mobile_app_…). Zpráva je v atributech senzoru.
+      default: []
+      selector:
+        action: {}
+    pause_buttons:
+      name: Tlačítko pauzy (volitelné)
+      description: Tlačítko pauzy tiskárny, např. z integrace Bambu Lab. Prázdné = jen upozornit.
+      default: []
+      selector:
+        entity:
+          domain: button
+          multiple: true
+mode: single
+triggers:
+  - trigger: state
+    entity_id: !input short_sensor
+    to: "on"
+variables:
+  pause_buttons: !input pause_buttons
+  sensor: !input short_sensor
+actions:
+  - if:
+      - condition: template
+        value_template: "{{ pause_buttons | length > 0 and state_attr(sensor, 'pause_recommended') == true }}"
+    then:
+      - action: button.press
+        target:
+          entity_id: !input pause_buttons
+  - choose: []
+    default: !input notify_actions

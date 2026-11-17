@@ -1,0 +1,27 @@
+name: Noozy Watcher
+version: "1.0.0"
+slug: noozy_watcher
+description: Hlídá 3D tiskárny 24/7 a předává tisky do Noozy na PC / Watches your 3D printers 24/7 and hands prints over to Noozy on the PC.
+url: https://noozy.cz
+arch:
+  - aarch64
+  - amd64
+startup: application
+boot: auto
+init: false
+# Síť hostitele: tiskárny i PC jsou v domácí síti a PC se po změně adresy hledá v její podsíti.
+# Webová stránka přesto pustí jen ingress HA (172.30.32.2) - viz WatcherWeb.
+host_network: true
+ingress: true
+ingress_port: 8765
+panel_icon: mdi:printer-3d
+panel_title: Noozy Watcher
+# Data (databáze, klíč, nastavení tiskáren) v /data - trvalá složka aplikace, záloha HA ji obsahuje.
+backup: hot
+# MQTT broker HA (Mosquitto) - entity slotů, „málo filamentu", události tisků. Bez něj Watcher dál hlídá a předává tisky.
+services:
+  - mqtt:want
+options:
+  reserve_g: 20
+schema:
+  reserve_g: int(0,1000)

@@ -1,0 +1,4 @@
+configuration:
+  reserve_g:
+    name: Filament reserve (g)
+    description: How many grams should be left on the spool on top, so that a print does not count as "low filament". Default 20 g.
