@@ -1,0 +1,4 @@
+# Linuxové konce řádků - Home Assistant staví obraz na Linuxu, skript s CRLF by nenaběhl.
+* text=auto eol=lf
+*.jar binary
+*.png binary

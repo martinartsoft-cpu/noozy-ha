@@ -11,4 +11,5 @@ ENV LANG=C.UTF-8 \
 # Sestavená aplikace (bin/ + lib/) - připraví ji build-watcher skript z repozitáře Noozy.
 COPY app /opt/noozy-watcher
 
-CMD ["/opt/noozy-watcher/bin/noozy-watcher"]
+# Přes sh: na příznaku „spustitelný" (git z Windows ho nemusí zachovat) pak nezáleží.
+CMD ["sh", "/opt/noozy-watcher/bin/noozy-watcher"]
