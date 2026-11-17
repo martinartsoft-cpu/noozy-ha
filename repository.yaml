@@ -1,5 +1,5 @@
 # Repozitář aplikací pro Home Assistant - Noozy Watcher.
 # V HA: Nastavení → Aplikace → Obchod s aplikacemi → ⋮ → Repozitáře → přidat adresu tohoto repozitáře.
 name: Noozy
-url: https://noozy.cz
+url: https://github.com/martinartsoft-cpu/noozy-ha
 maintainer: Noozy
