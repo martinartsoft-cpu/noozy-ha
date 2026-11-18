@@ -1,5 +1,5 @@
 name: Noozy Watcher
-version: "1.0.2"
+version: "1.0.3"
 slug: noozy_watcher
 description: Hlídá 3D tiskárny 24/7 a předává tisky do Noozy na PC / Watches your 3D printers 24/7 and hands prints over to Noozy on the PC.
 url: https://noozy.cz

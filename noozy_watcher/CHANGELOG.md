@@ -1,3 +1,7 @@
+# 1.0.3
+
+- Databáze 36 (Noozy na PC: projekty, zákazníci u zakázek, štítky). Aktualizujte spolu s PC.
+
 # 1.0.2
 
 - Databáze 35 (Noozy 1.0.35 na PC: „Jen nacenění“ u soukromých zakázek). Aktualizujte spolu s PC.
