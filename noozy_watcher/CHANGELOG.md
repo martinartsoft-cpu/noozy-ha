@@ -1,3 +1,7 @@
+# 1.0.2
+
+- Databáze 35 (Noozy 1.0.35 na PC: „Jen nacenění“ u soukromých zakázek). Aktualizujte spolu s PC.
+
 # 1.0.1
 
 - Po zapnutí PC se Watcher připojí do 10 s (dřív až za minutu, když bylo PC delší dobu vypnuté).
